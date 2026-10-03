@@ -1,18 +1,18 @@
 import java.util.Scanner;
 
-// Kelas Node untuk merepresentasikan setiap pelanggan dalam Linked List
-class Node {
-    String customerName;
-    Node next;
-
-    public Node(String customerName) {
-        this.customerName = customerName;
-        this.next = null;
-    }
-}
-
 // Kelas Queue berbasis Linked List untuk Customer Service
 class LinkedListQueue {
+    // Kelas Node untuk merepresentasikan setiap pelanggan dalam Linked List
+    private class Node {
+        String customerName;
+        Node next;
+
+        public Node(String customerName) {
+            this.customerName = customerName;
+            this.next = null;
+        }
+    }
+
     private Node front; // Menunjuk ke pelanggan di depan antrean
     private Node rear;  // Menunjuk ke pelanggan di belakang antrean
     private int size;   // Ukuran antrean
@@ -61,7 +61,7 @@ class LinkedListQueue {
             return;
         }
 
-        System.out.println("\nPelanggan dalam antrean:");
+        System.out.println("\nPelanggan dalam antrean (Total: " + size + " orang):");
         Node current = front;
         int index = 1;
         while (current != null) {
