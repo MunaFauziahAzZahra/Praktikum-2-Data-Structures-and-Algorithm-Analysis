@@ -85,29 +85,55 @@ public class StudentLinkedList {
         Node current = head;
         int nomor = 1;
         while (current != null) {
+            String nilaiFormatted = (current.getNilai() == (long) current.getNilai()) ?
+                    String.format("%d", (long) current.getNilai()) :
+                    String.valueOf(current.getNilai());
             System.out.println(nomor + ". NIM: " + current.getNim()
                     + ", Nama: " + current.getNama()
-                    + ", Nilai: " + current.getNilai());
+                    + ", Nilai: " + nilaiFormatted);
             current = current.getNext();
             nomor++;
         }
     }
 
+    // Mengosongkan daftar mahasiswa
+    public void clear() {
+        head = null;
+        tail = null;
+    }
+
+    // Mencari apakah NIM ada dalam daftar (publik untuk pengujian/benchmark)
+    public boolean contains(String nim) {
+        return findStudent(nim) != null;
+    }
+
+    // Penambahan langsung di tail tanpa cek duplikat O(1) - berguna untuk benchmark struktur linked list murni
+    public void addLastDirect(String nim, String nama, double nilai) {
+        Node baru = new Node(nim, nama, nilai);
+        if (head == null) head = baru;
+        else tail.setNext(baru);
+        tail = baru;
+    }
+
     public static void demo() {
+        System.out.println("=== DEMO MANAJEMEN DATA MAHASISWA (LINKED LIST) ===");
         StudentLinkedList daftar = new StudentLinkedList();
         daftar.addStudent("12345", "Andi", 85);
         daftar.addStudent("67890", "Budi", 90);
-        System.out.println("Daftar mahasiswa:");
+        System.out.println("Daftar Mahasiswa:");
         daftar.display();
 
-        System.out.println("\nUpdate nilai Budi menjadi 95:");
+        System.out.println("\nMengupdate nilai mahasiswa (Budi -> 95)");
         daftar.updateGrade("67890", 95);
+        System.out.println("Daftar Mahasiswa setelah update:");
         daftar.display();
 
-        System.out.println("\nHapus mahasiswa Andi:");
+        System.out.println("\nMenghapus mahasiswa Andi (NIM: 12345):");
         daftar.removeStudent("12345");
+        System.out.println("Daftar Mahasiswa setelah penghapusan:");
         daftar.display();
     }
+
     public static void main(String[] args) {
         demo();
     }
