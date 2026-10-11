@@ -50,7 +50,7 @@ public class StudentLinkedList {
         return true;
     }
 
-    // Menghapus node dan memperbaiki hubungan antar-node.
+    // Menghapus node dan memperbaiki koneksi antar-node.
     public boolean removeStudent(String nim) {
         Node current = head;
         Node previous = null;
@@ -102,12 +102,12 @@ public class StudentLinkedList {
         tail = null;
     }
 
-    // Mencari apakah NIM ada dalam daftar (publik untuk pengujian/benchmark)
+    // Mencari apakah NIM ada dalam daftar
     public boolean contains(String nim) {
         return findStudent(nim) != null;
     }
 
-    // Penambahan langsung di tail tanpa cek duplikat O(1) - berguna untuk benchmark struktur linked list murni
+    // Penambahan langsung di tail tanpa cek duplikat
     public void addLastDirect(String nim, String nama, double nilai) {
         Node baru = new Node(nim, nama, nilai);
         if (head == null) head = baru;

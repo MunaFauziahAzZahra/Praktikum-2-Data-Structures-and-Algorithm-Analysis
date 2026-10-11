@@ -28,7 +28,7 @@ class LinkedListQueue {
         enqueue(name, true);
     }
 
-    // Overload enqueue dengan opsi cetak pesan (berguna untuk benchmark tanpa overhead I/O)
+    // Overload enqueue dengan opsi cetak pesan
     public void enqueue(String name, boolean verbose) {
         Node newNode = new Node(name);
         if (rear == null) {
@@ -102,7 +102,6 @@ class LinkedListQueue {
 
 // Kelas Utama dengan Menu Interaktif
 public class CustomerQueue {
-    // Metode demo otomatis sesuai dengan contoh output di spesifikasi PDF
     public static void demo() {
         System.out.println("=== DEMO SISTEM ANTREAN (QUEUE) ===");
         LinkedListQueue queue = new LinkedListQueue();
